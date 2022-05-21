@@ -1,0 +1,50 @@
+var vector v;
+var printer p;
+
+class printer {
+  method void constructor () {}
+
+  method void print () {}
+}
+
+class point extends printer {
+  attribute int x;
+  attribute int y;
+
+  method void constructor (int x, int y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  method void print () {
+    putchar (this.x);
+    putchar (this.y);
+  }
+}
+
+class vector extends printer {
+  attribute point p1;
+  attribute point p2;
+
+  method void constructor (int a, int b, int c, int d) {
+    this.p1 = new point(a, b);
+    this.p2 = new point(c, d);
+  }
+
+  method point get() {
+    return new point(this.p2.x - this.p1.x, this.p2.y - this.p1.y);
+  }
+
+  method void print () {
+    this.p1.print();
+    this.p2.print();
+  }
+
+}
+
+
+main {
+  v = new vector(8, 18, 1, 3);
+  p = v.get();
+  p.print();
+}
